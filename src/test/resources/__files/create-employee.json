@@ -1,0 +1,8 @@
+{
+	"username" : "user",
+	"first_name" : "first",
+	"last_name" : "last",
+	"email" : "email@email.com"
+	"Emplist": ["emp1","emp2","emp3"]
+	
+}
