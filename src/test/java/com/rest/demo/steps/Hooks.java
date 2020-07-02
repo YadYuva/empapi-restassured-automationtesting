@@ -3,6 +3,11 @@ package com.rest.demo.steps;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 
+/**
+ * Hooks class to set the @Before annotation - method to run before each scenario begins 
+ * to map the scenarios with relevant stubs created in RestBaseforMock class
+ * @author Santhalakshmi 
+ */
 public class Hooks extends RestBaseforMock{
 	
 	@Before

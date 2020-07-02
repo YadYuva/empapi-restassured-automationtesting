@@ -11,20 +11,17 @@ import static com.github.tomakehurst.wiremock.client.WireMock.any;
 import static com.github.tomakehurst.wiremock.client.WireMock.anyUrl;
 import static com.github.tomakehurst.wiremock.client.WireMock.matching;
 
-import io.restassured.config.RestAssuredConfig;
-import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
-import io.restassured.specification.RequestSpecification;
 
-
+/**
+ * This acts as a base class for WireMock Stubs and created as super class for this design framework
+ * @author Santhalakshmi
+ *
+ */
 public class RestBaseforMock {
 
-	protected static RequestSpecification request;
-	protected static Response response;
-	protected static ValidatableResponse json;
-	protected static RestAssuredConfig config;
-
-
+	/**
+	 * Get stub created for login employee feature 
+	 */
 	protected void mockLogin() {
 		stubFor(get(urlEqualTo("/employee/login"))
 				.willReturn(aResponse()
@@ -34,6 +31,10 @@ public class RestBaseforMock {
 						.withBody("{\"result\":\"successful operation\"}")
 						));
 	}
+	
+	/**
+	 * Get stub created for logout employee feature
+	 */
 	protected void mockLogout() {
 		stubFor(get(urlEqualTo("/employee/logout"))
 				.willReturn(aResponse()
@@ -43,7 +44,10 @@ public class RestBaseforMock {
 						.withBody("{\"result\":\"successful operation\"}")
 						));
 	}
-
+	
+	/**
+	 * Post stub created for create employee feature
+	 */
 	protected void mockEmployeeCreate() {
 		stubFor(post(urlEqualTo("/employee"))
 				.withBasicAuth("Lakshmi.K@cts.com", "pass123")
@@ -54,7 +58,10 @@ public class RestBaseforMock {
 						.withBody("{\"result\":\"successful operation\"}")
 						));
 	}
-
+	
+	/**
+	 * Get stub created for searching employee by name feature
+	 */
 	protected void mockgetemployeeByName() {
 		stubFor(get(urlPathMatching("/employee/employeename"))
 				.withQueryParam("first_name", matching("([A-Za-z]+)$"))
@@ -66,6 +73,9 @@ public class RestBaseforMock {
 						));
 	}
 
+	/**
+	 * Put stub created for update employee feature
+	 */
 	protected void mockEmployeeUpdate() {
 		stubFor(put(urlPathMatching("/employee/employeename"))
 				.withQueryParam("first_name", matching("([A-Za-z]+)$"))
@@ -77,6 +87,10 @@ public class RestBaseforMock {
 						.withBody("{\"result\":\"successful operation\"}")
 						));
 	}
+	
+	/**
+	 * Delete stub created for delete employee feature
+	 */
 	protected void mockDeleteEmployee(){
 		stubFor(delete(urlPathMatching("/employee/employeename"))
 				.withQueryParam("first_name", matching("([A-Za-z]+)$"))
@@ -88,6 +102,9 @@ public class RestBaseforMock {
 						));
 	}
 
+	/**
+	 * Error stub created for any request with incorrect Url other than defined to show up 404 status code with message "failed operation" 
+	 */
 	protected void mockErrorstub(){
 		stubFor(any(anyUrl())
 				.atPriority(10)

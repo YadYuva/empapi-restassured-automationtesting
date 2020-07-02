@@ -1,4 +1,4 @@
-Feature: Delete employee
+Feature: Delete employee using delete
 
 Background:
 Given service request timeout is set
@@ -7,7 +7,8 @@ Scenario Outline: Delete employee using Delete with valid logged in user
 Given the user logged in with <username> and <password>
 And the <employeename> of the employee to be deleted
 When the client sends the Delete call
-Then the service status code is 203 
+Then the service status code is 203
+And the response has successful operation 
 
 Examples:
 |username|password|employeename|

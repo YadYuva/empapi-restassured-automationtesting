@@ -1,5 +1,6 @@
 Feature: Update employees call using PUT
- Background:
+
+Background:
 Given service request timeout is set
 
 Scenario Outline: Update employee using PUT
@@ -7,6 +8,7 @@ Given the user logged in with <username> and <password>
 And the employee name <employeename> of the employee to be updated
 When the client sends the Put call
 Then the service status code is 202
+And the response has successful operation
 
 Examples:
 |username|password|employeename|
